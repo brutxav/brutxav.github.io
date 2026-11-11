@@ -1,0 +1,55 @@
+project:
+  type: website
+  output-dir: _site
+  resources:
+    - files/
+
+website:
+  title: "Xavier Bruant"
+  description: "PhD student in mechanics at École polytechnique"
+  site-url: https://brutxav.github.io
+  favicon: images/logo.png
+  page-navigation: false
+  search: false
+  navbar:
+    title: false            # pas de titre à gauche : seulement les items à droite
+    collapse-below: md
+    right:
+      - text: About
+        href: "index.qmd#about"
+      - text: Research
+        href: "index.qmd#research"
+      - text: Teaching
+        menu:                 # menu déroulant
+          - text: All courses
+            href: "index.qmd#teaching"
+          - text: "---"
+          - text: Computational Solid Mechanics
+            href: "index.qmd#course-csm"
+          - text: Mechanics and Heat
+            href: "index.qmd#course-mh"
+          - text: Solid Mechanics
+            href: "index.qmd#course-sm"
+          - text: Computational Fluid Mechanics
+            href: "index.qmd#course-cfm"
+      # - text: Science sheets      # masqué pour le moment
+      #   href: "index.qmd#sheets"
+      - text: CV
+        href: "index.qmd#cv"
+      # - icon: github              # masqué : décommenter ces 3 lignes pour le réafficher
+      #   href: https://github.com/brutxav
+      #   aria-label: GitHub
+      - icon: linkedin
+        href: https://www.linkedin.com/in/xavier-bruant-49155915b
+        aria-label: LinkedIn
+  page-footer:
+    left: "© 2026 Xavier Bruant"
+    right: "Made with [Quarto](https://quarto.org)"
+
+format:
+  html:
+    theme: [cosmo, styles.scss]
+    toc: false
+    smooth-scroll: true
+    lightbox: auto        # images agrandissables au clic, sauf celles marquées {.nolightbox} (ex : la photo)
+    include-after-body: assets/scroll.html

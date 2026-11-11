@@ -1,0 +1,173 @@
+---
+pagetitle: "Xavier Bruant"
+page-layout: custom
+section-divs: false
+---
+
+::: {#about .hero}
+::: hero-inner
+::: hero-photo
+![](images/profile.jpg){.nolightbox fig-alt="Photo of Xavier Bruant"}
+:::
+
+::: hero-text
+# Xavier Bruant
+
+[PhD student in mechanics]{.tagline}
+
+::: bio
+I work on **chemomechanical couplings in a-Si electrodes** at the
+[LMS]{.smallcaps} and [PMC]{.smallcaps} laboratories of École polytechnique
+(Palaiseau, France).
+:::
+
+::: links
+[<i class="bi bi-envelope"></i> xavier.bruant@polytechnique.edu](mailto:xavier.bruant@polytechnique.edu)
+[<i class="bi bi-github"></i> GitHub](https://github.com/brutxav)
+[<i class="bi bi-linkedin"></i> LinkedIn](https://www.linkedin.com/in/xavier-bruant-49155915b)
+[<i class="bi bi-person-badge"></i> ORCID](https://orcid.org/0000-0001-8005-7397)
+:::
+:::
+:::
+
+[<i class="bi bi-chevron-double-down"></i>](#research){.scroll-hint aria-label="Scroll down"}
+:::
+
+::: {#research .block .alt}
+::: block-inner
+## <i class="bi bi-battery-half"></i> Research
+
+**Chemomechanical couplings in a-Si electrodes** — PhD at LMS and PMC,
+École polytechnique (2026, expected).
+
+### Publications
+
+<!--
+Pour ajouter une publi : copier un bloc ::: pub ... ::: (la plus récente en haut).
+Image optionnelle à droite : déposer l'image dans images/pubs/ puis ajouter,
+juste avant le dernier ::: du bloc pub (après celui qui ferme pub-body) :
+
+::: pub-figure
+![](images/pubs/mon-image.png){.lightbox fig-alt="Description"}
+:::
+
+Un clic sur l'image l'agrandit.
+-->
+
+::: pubs
+::: pub
+[2026]{.year}
+
+::: pub-body
+[Stress dependence of the chemical potential of lithium in a silicon electrode]{.pub-title}
+
+[A. T. Le, **X. Bruant**, N. T. Phung, F. Ozanam, M. Rosso, L. Guin]{.pub-authors}
+
+[*Journal of the Mechanics and Physics of Solids*, 207, 106421]{.pub-venue}
+
+::: pub-links
+[<i class="bi bi-link-45deg"></i> DOI](https://doi.org/10.1016/j.jmps.2025.106421)
+[<i class="bi bi-file-earmark-pdf"></i> HAL](https://hal.science/hal-05100772v2)
+:::
+:::
+:::
+
+::: pub
+[2023]{.year}
+
+::: pub-body
+[Domain pattern formation in tetragonal ferroelectric ceramics]{.pub-title}
+
+[R. Indergand, **X. Bruant**, D. M. Kochmann]{.pub-authors}
+
+[*Journal of the Mechanics and Physics of Solids*, 181, 105426]{.pub-venue}
+
+::: pub-links
+[<i class="bi bi-link-45deg"></i> DOI](https://doi.org/10.1016/j.jmps.2023.105426)
+:::
+:::
+:::
+:::
+
+[Full list on [ORCID](https://orcid.org/0000-0001-8005-7397).]{.pub-more}
+:::
+:::
+
+::: {#teaching .block}
+::: block-inner
+## <i class="bi bi-mortarboard"></i> Teaching
+
+Over the past few years, I have been a teaching assistant in the following classes
+at École polytechnique.
+
+::: cards
+::: {#course-csm .card-item}
+### Computational Solid Mechanics
+[Graduate · M1 / Cycle ingénieur 3A · 2025]{.meta}
+
+The Finite Element Method for linear and nonlinear solid mechanics problems:
+concepts, implementation and code (FEniCS in Python).
+:::
+
+::: {#course-mh .card-item}
+### Mechanics and Heat
+[Undergraduate · L1 · 2024, 2025]{.meta}
+
+An introductory class to basic mechanics and thermodynamics.
+:::
+
+::: {#course-sm .card-item}
+### Solid Mechanics
+[Undergraduate · L3 / M1 · 2023, 2024]{.meta}
+
+Nonlinear mechanics of rods, with an emphasis on stability, waves and shocks.
+:::
+
+::: {#course-cfm .card-item}
+### Computational Fluid Mechanics
+[Graduate · M1 / Cycle ingénieur 3A · 2023]{.meta}
+
+Solving computational fluid mechanics problems: time integration, finite
+differences, stability, implementation in Python.
+:::
+:::
+:::
+:::
+
+<!-- SECTION MASQUÉE — retirer cette ligne et la ligne « FIN » pour la réafficher
+::: {#sheets .block .alt}
+::: block-inner
+## <i class="bi bi-journal-text"></i> Science sheets
+
+[À compléter : fiches, notes de cours, slides Quarto…]{.todo}
+:::
+:::
+FIN SECTION MASQUÉE -->
+
+::: {#cv .block .alt}
+::: block-inner
+## <i class="bi bi-file-earmark-person"></i> CV
+
+<!-- Bouton PDF : déposer le fichier dans files/cv.pdf. Il reste caché tant que le fichier n'existe pas. -->
+[<i class="bi bi-file-earmark-pdf"></i> Download CV (PDF)](files/cv.pdf){.cv-pdf download="Xavier_Bruant_CV.pdf"}
+
+### Education
+
+::: timeline
+::: entry
+[2026 (expected)]{.year}\
+**Ph.D. in Mechanics** — *Chemomechanical couplings in aSi electrodes*, LMS and PMC, École polytechnique
+:::
+
+::: entry
+[2023]{.year}\
+**M.S. in Space Engineering** — Caltech
+:::
+
+::: entry
+[2022]{.year}\
+**M.S. in Mechanics** — École polytechnique
+:::
+:::
+:::
+:::

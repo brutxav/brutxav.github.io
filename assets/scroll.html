@@ -1,0 +1,47 @@
+<nav class="section-rail" aria-label="Sections">
+  <a href="#about"><i class="bi bi-person"></i><span>About</span></a>
+  <a href="#research"><i class="bi bi-battery-half"></i><span>Research</span></a>
+  <a href="#teaching"><i class="bi bi-mortarboard"></i><span>Teaching</span></a>
+  <!-- <a href="#sheets"><i class="bi bi-journal-text"></i><span>Science sheets</span></a> -->
+  <a href="#cv"><i class="bi bi-file-earmark-person"></i><span>CV</span></a>
+</nav>
+
+<script>
+(function () {
+  const header = document.getElementById("quarto-header");
+  const sections = [...document.querySelectorAll(".hero, .block")];
+  if (!sections.length) {
+    document.querySelector(".section-rail")?.remove();
+    return;
+  }
+
+  // Bandeau translucide dès qu'on quitte le haut de page
+  const onScroll = () => header && header.classList.toggle("scrolled", window.scrollY > 40);
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  // Liens (bandeau + rail) qui pointent vers une section de la page
+  const links = [...document.querySelectorAll("#quarto-header a.nav-link, #quarto-header a.dropdown-toggle, .section-rail a")]
+    .map(a => ({ a, id: (a.getAttribute("href") || "").split("#")[1] }))
+    .filter(l => l.id);
+  // Le bouton "Teaching" (menu déroulant) n'a pas d'ancre : on le relie à la section
+  document.querySelectorAll("#quarto-header .dropdown-toggle").forEach(t => {
+    if (/teaching/i.test(t.textContent)) links.push({ a: t, id: "teaching" });
+  });
+
+  // Scrollspy : surligne l'item de la section visible
+  const setActive = id => links.forEach(l => l.a.classList.toggle("active-section", l.id === id));
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id); });
+  }, { rootMargin: "-45% 0px -50% 0px" });
+  sections.forEach(s => obs.observe(s));
+
+  // Bouton "Download CV (PDF)" : caché tant que files/cv.pdf n'existe pas
+  document.querySelectorAll("a.cv-pdf").forEach(a => {
+    fetch(a.href, { method: "HEAD" }).then(r => { if (r.ok) a.classList.add("available"); }).catch(() => {});
+  });
+
+  // Quarto marque "active" le lien de la page courante : inutile ici
+  document.querySelectorAll("#quarto-header .nav-link.active").forEach(a => a.classList.remove("active"));
+})();
+</script>

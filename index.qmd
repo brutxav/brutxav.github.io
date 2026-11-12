@@ -166,7 +166,7 @@ FIN SECTION MASQUÉE -->
 
 ::: entry
 [2022]{.year}\
-**M.S. in Mechanics** — École polytechnique
+**Engineering degree** — École polytechnique
 :::
 :::
 :::

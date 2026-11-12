@@ -41,6 +41,89 @@
     fetch(a.href, { method: "HEAD" }).then(r => { if (r.ok) a.classList.add("available"); }).catch(() => {});
   });
 
+  // ---------- Photo + nom qui « volent » vers le coin du bandeau au scroll ----------
+  (function () {
+    const photo = document.querySelector(".hero-photo img");
+    const name  = document.querySelector(".hero h1");
+    if (!header || !photo || !name) return;
+
+    // Version miniature, dans le bandeau
+    const mini = document.createElement("a");
+    mini.className = "nav-mini-brand";
+    mini.href = "#about";
+    mini.setAttribute("aria-label", "Back to top");
+    mini.innerHTML = '<img alt=""><span></span>';
+    mini.querySelector("img").src = photo.currentSrc || photo.src;
+    mini.querySelector("span").textContent = name.textContent.trim();
+    header.appendChild(mini);
+    const miniImg = mini.querySelector("img"), miniName = mini.querySelector("span");
+
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // Copies qui font le trajet (les originaux restent en place, invisibles pendant le vol)
+    const flyPhoto = document.createElement("img");
+    flyPhoto.className = "fly-photo";
+    flyPhoto.alt = "";
+    flyPhoto.src = mini.querySelector("img").src;
+    const flyName = document.createElement("div");
+    flyName.className = "fly-name";
+    flyName.textContent = miniName.textContent;
+    if (!reduce) document.body.append(flyPhoto, flyName);
+
+    const textRect = () => { const r = document.createRange(); r.selectNodeContents(name); return r.getBoundingClientRect(); };
+    const lerp = (a, b, t) => a + (b - a) * t;
+    const ease = t => t * t * (3 - 2 * t);
+    let range = 300, bigFont = 60, smallFont = 18, flyH = 60, phase = -1;
+
+    const measure = () => {
+      const r = photo.getBoundingClientRect();
+      range = Math.max(140, r.top + window.scrollY - 10);   // le vol se termine quand la photo atteindrait le bandeau
+      bigFont = parseFloat(getComputedStyle(name).fontSize);
+      smallFont = parseFloat(getComputedStyle(miniName).fontSize);
+      flyName.style.fontSize = bigFont + "px";
+      flyH = flyName.offsetHeight;
+    };
+
+    const setPhase = ph => {
+      if (ph === phase) return;
+      phase = ph;
+      const flying = ph === 1;
+      photo.style.visibility = name.style.visibility = ph === 0 || reduce ? "" : "hidden";
+      flyPhoto.style.visibility = flyName.style.visibility = flying ? "visible" : "hidden";
+      mini.classList.toggle("shown", reduce ? window.scrollY > range : ph === 2);
+    };
+
+    const update = () => {
+      const t = Math.min(1, Math.max(0, window.scrollY / range));
+      if (reduce) { mini.classList.toggle("shown", t >= 1); return; }
+      if (t <= 0) return setPhase(0);
+      if (t >= 1) return setPhase(2);
+      setPhase(1);
+      const k = ease(t);
+
+      // Photo : du cercle du hero vers l'avatar du bandeau
+      const a = photo.getBoundingClientRect(), b = miniImg.getBoundingClientRect();
+      const size = lerp(a.width, b.width, k);
+      flyPhoto.style.width = flyPhoto.style.height = size + "px";
+      flyPhoto.style.borderWidth = lerp(6, 2, k) + "px";
+      flyPhoto.style.transform = `translate(${lerp(a.left, b.left, k)}px, ${lerp(a.top, b.top, k)}px)`;
+
+      // Nom : rétrécit et glisse à côté de l'avatar
+      const n = textRect(), m = miniName.getBoundingClientRect();
+      const s = lerp(1, smallFont / bigFont, k);
+      const cy = lerp(n.top + n.height / 2, m.top + m.height / 2, k);
+      flyName.style.transform = `translate(${lerp(n.left, m.left, k)}px, ${cy - flyH * s / 2}px) scale(${s})`;
+    };
+
+    let ticking = false;
+    const onFrame = () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { ticking = false; update(); }); } };
+    window.addEventListener("scroll", onFrame, { passive: true });
+    window.addEventListener("resize", () => { measure(); phase = -1; update(); });
+    const init = () => { measure(); phase = -1; update(); };
+    if (photo.complete) init(); else photo.addEventListener("load", init);
+    document.fonts && document.fonts.ready.then(init);
+  })();
+
   // Quarto marque "active" le lien de la page courante : inutile ici
   document.querySelectorAll("#quarto-header .nav-link.active").forEach(a => a.classList.remove("active"));
 })();

@@ -264,6 +264,49 @@ body {
 .cv-pdf { display: none; padding: .45rem 1rem; font-size: .92rem; margin-bottom: 1.2rem; background: #fff; }
 .cv-pdf.available { display: inline-flex; }
 
+/* ---------- Mini photo + nom dans le bandeau (apparaît au scroll) ---------- */
+.nav-mini-brand {
+  position: absolute;
+  left: 1.5rem; top: 50%;
+  transform: translateY(-50%);
+  display: flex; align-items: center; gap: .6rem;
+  color: $ink; text-decoration: none;
+  font-family: $headings-font-family; font-weight: 600; font-size: 1.15rem;
+  line-height: 1;
+  opacity: 0; pointer-events: none;
+  transition: opacity .2s ease;
+  z-index: 2;
+}
+.nav-mini-brand.shown { opacity: 1; pointer-events: auto; }
+.nav-mini-brand:hover { color: $warm; }
+.nav-mini-brand img {
+  width: 36px; height: 36px;
+  border-radius: 50%; object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px rgba(43, 47, 58, 0.18);
+}
+.fly-photo, .fly-name {
+  position: fixed; top: 0; left: 0;
+  transform-origin: 0 0;
+  pointer-events: none;
+  visibility: hidden;
+  z-index: 1031;
+  will-change: transform;
+}
+.fly-photo {
+  border-radius: 50%; object-fit: cover;
+  border: 6px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 10px 30px rgba(74, 98, 131, 0.2);
+}
+.fly-name {
+  font-family: $headings-font-family; font-weight: 600;
+  line-height: 1.02; white-space: nowrap;
+  color: $ink;
+}
+@media (max-width: 768px) {
+  .nav-mini-brand { left: auto; right: 1rem; }   // le menu burger est à gauche sur mobile
+}
+
 /* ---------- Mobile ---------- */
 @media (max-width: 768px) {
   .hero-inner { flex-direction: column; text-align: center; gap: 1.8rem; }

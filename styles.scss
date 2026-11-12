@@ -266,16 +266,13 @@ body {
 
 /* ---------- Mini photo + nom dans le bandeau (apparaît au scroll) ---------- */
 .nav-mini-brand {
-  position: absolute;
-  left: 1.5rem; top: 50%;
-  transform: translateY(-50%);
   display: flex; align-items: center; gap: .6rem;
   color: $ink; text-decoration: none;
   font-family: $headings-font-family; font-weight: 600; font-size: 1.15rem;
   line-height: 1;
   opacity: 0; pointer-events: none;
   transition: opacity .2s ease;
-  z-index: 2;
+  flex: none;
 }
 .nav-mini-brand.shown { opacity: 1; pointer-events: auto; }
 .nav-mini-brand:hover { color: $warm; }
@@ -304,7 +301,7 @@ body {
   color: $ink;
 }
 @media (max-width: 768px) {
-  .nav-mini-brand { left: auto; right: 1rem; }   // le menu burger est à gauche sur mobile
+  .nav-mini-brand { order: 2; margin-left: auto; }   // le menu burger (order 1) est à gauche : la mini photo va à droite
 }
 
 /* ---------- Mobile ---------- */

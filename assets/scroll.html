@@ -55,7 +55,9 @@
     mini.innerHTML = '<img alt=""><span></span>';
     mini.querySelector("img").src = photo.currentSrc || photo.src;
     mini.querySelector("span").textContent = name.textContent.trim();
-    header.appendChild(mini);
+    // Placée dans la 1re ligne du bandeau (et non par-dessus) : reste en haut quand le menu mobile s'ouvre
+    const bar = header.querySelector(".navbar-container") || header;
+    bar.insertBefore(mini, bar.querySelector(".navbar-collapse"));
     const miniImg = mini.querySelector("img"), miniName = mini.querySelector("span");
 
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

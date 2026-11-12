@@ -1,6 +1,6 @@
 # brutxav.github.io
 
-Site personnel de Xavier Bruant, construit avec [Quarto](https://quarto.org).
+Bienvenue sur le site Xavier Bruant, construit avec [Quarto](https://quarto.org).
 
 ## Travailler en local
 

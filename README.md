@@ -1,4 +1,4 @@
-# brutxav.github.io
+# xavierbruant.github.io
 
 Bienvenue sur le site Xavier Bruant, construit avec [Quarto](https://quarto.org).
 
@@ -25,7 +25,7 @@ puis ajouter le lien dans `_quarto.yml` (bandeau) et dans `assets/scroll.html` (
 ## Slides Quarto
 
 Un fichier `.qmd` avec `format: revealjs` placé dans le projet (par ex. `slides/mon-talk.qmd`)
-est compilé avec le site et publié à `https://brutxav.github.io/slides/mon-talk.html`.
+est compilé avec le site et publié à `https://xavierbruant.github.io/slides/mon-talk.html`.
 
 ## Publication
 

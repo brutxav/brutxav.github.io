@@ -23,7 +23,7 @@ I work on **chemomechanical couplings in a-Si electrodes** at the
 
 ::: links
 [<i class="bi bi-envelope"></i> xavier.bruant@polytechnique.edu](mailto:xavier.bruant@polytechnique.edu)
-[<i class="bi bi-github"></i> GitHub](https://github.com/brutxav)
+[<i class="bi bi-github"></i> GitHub](https://github.com/xavierbruant)
 [<i class="bi bi-linkedin"></i> LinkedIn](https://www.linkedin.com/in/xavier-bruant-49155915b)
 [<i class="bi bi-person-badge"></i> ORCID](https://orcid.org/0000-0001-8005-7397)
 :::

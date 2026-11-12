@@ -7,7 +7,7 @@ project:
 website:
   title: "Xavier Bruant"
   description: "PhD student in mechanics at École polytechnique"
-  site-url: https://brutxav.github.io
+  site-url: https://xavierbruant.github.io
   favicon: images/logo.png
   page-navigation: false
   search: false
@@ -37,7 +37,7 @@ website:
       - text: CV
         href: "index.qmd#cv"
       # - icon: github              # masqué : décommenter ces 3 lignes pour le réafficher
-      #   href: https://github.com/brutxav
+      #   href: https://github.com/xavierbruant
       #   aria-label: GitHub
       - icon: linkedin
         href: https://www.linkedin.com/in/xavier-bruant-49155915b
